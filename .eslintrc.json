@@ -1,0 +1,74 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "next",
+
+    // Airbnb
+    "plugin:react/recommended",
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+
+    // Testing
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "no-console": "error",
+    "react/require-default-props": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "react/prop-types": "off", // If you're using TypeScript, prop-types are not needed
+    "@typescript-eslint/explicit-module-boundary-types": "off", // Allows you to skip explicit return types in TypeScript
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }], // Only .tsx files for JSX
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/no-unresolved": "off", // TypeScript takes care of this
+    "react/react-in-jsx-scope": "off", // Not needed in Next.js
+    "react/jsx-props-no-spreading": "off", // Allowing spread props
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "test.{ts,tsx,js,jsx}",
+          "test-*.{ts,tsx,js,jsx}",
+          "**/*{.,_}{test,spec}.{ts,tsx,js,jsx}",
+          "**/jest.config.{ts,js}",
+          "**/jest.setup.{ts,js}",
+          "**/*.stories.*",
+          "**/.storybook/**/*.*"
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
