@@ -1,11 +1,13 @@
 import { FC } from 'react';
+import LoginForm from '@/components/organisms/LoginForm';
 
 interface LoginPageProps {}
 
 const LoginPage: FC<LoginPageProps> = ({}) => {
   return (
-    <main className="h-screen flex justify-around items-center">
-      <h1 className="text-lg font-medium font-sans">Login Page</h1>
+    <main className="flex flex-col items-center h-screen">
+      <h1>LoginPage</h1>
+      <LoginForm />
     </main>
   );
 };
