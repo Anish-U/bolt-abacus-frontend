@@ -77,7 +77,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <html lang="en">
       <body
-        className={`${gilroy.variable} ${dmSans.variable} font-gilroy bg-black text-white`}
+        className={`${gilroy.variable} ${dmSans.variable} font-gilroy bg-black text-white text-md`}
       >
         {children}
       </body>
