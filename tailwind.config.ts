@@ -14,8 +14,8 @@ const config: Config = {
     colors: {
       white: '#E1E1E1',
       gold: '#FACB25',
-      black: '#201D14',
-      grey: '#4B4B4B',
+      black: '#131310',
+      grey: '#717171',
       red: '#FF515B',
     },
     boxShadow: {

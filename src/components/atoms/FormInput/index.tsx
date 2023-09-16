@@ -29,7 +29,7 @@ const FormInput: FC<FormInputProps> = ({ name, label, ...props }) => {
         {label}
       </label>
       <input
-        className={`min-w-fit px-3 py-2 my-3 tablet:text-xl desktop:text-lg tablet:px-4 desktop:px-4 tablet:py-3 desktop:py-3 desktop:my-1 text-lg focus:outline-none placeholder:text-grey border border-solid rounded-lg text-white bg-black
+        className={`min-w-fit px-3 py-2 my-3 tablet:text-xl desktop:text-lg tablet:px-4 desktop:px-4 tablet:py-3 desktop:py-3 desktop:my-1 text-lg focus:outline-none placeholder:text-grey border-2 border-solid rounded-lg text-white bg-black
         ${
           error
             ? 'border-red/50 focus:border-red'
