@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Image from 'next/image';
 import LoginForm from '@/components/organisms/LoginForm';
 import NavBar from '@/components/molecules/NavBar';
 
@@ -6,10 +7,22 @@ interface LoginPageProps {}
 
 const LoginPage: FC<LoginPageProps> = ({}) => {
   return (
-    <main className="flex flex-col items-center h-screen">
+    <main className="tablet:h-[80vh] tablet:overflow-hidden desktop:h-auto desktop:overflow-auto">
       <NavBar />
-      <h1>LoginPage</h1>
-      <LoginForm />
+      <div className="flex justify-around h-full px-2 desktop:pt-3">
+        <div className="pt-16 tablet:h-full desktop:w-[30%] desktop:px-20 desktop:pt-12 tablet:flex tablet:items-center">
+          <LoginForm />
+        </div>
+        <div className="hidden pl-10 pt-10 items-center justify-center tablet:hidden desktop:w-[70%] desktop:flex">
+          <Image
+            src="https://picsum.photos/700/500/?blur"
+            alt="sd"
+            width={700}
+            height={500}
+            className="rounded-md"
+          />
+        </div>
+      </div>
     </main>
   );
 };

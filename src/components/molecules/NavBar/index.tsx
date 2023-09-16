@@ -18,7 +18,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
 
   return (
     <nav className="w-full h-24">
-      <div className="flex items-center justify-between w-full h-full px-4 tablet:px-10 desktop:px-16">
+      <div className="flex items-center justify-between w-full h-full px-4 tablet:px-10 desktop:px-20">
         <BrandLogo />
         <div>
           <ul className="items-center hidden tablet:flex desktop:flex">
@@ -48,7 +48,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
           className={`z-1 fixed w-[75%] h-screen p-10 top-0 tablet:hidden desktop:hidden bg-grey ease-in duration-500
 					${menuOpen ? 'left-0' : 'left-[100%] opacity-0'}`}
         >
-          <div className="flex w-full items-center justify-end">
+          <div className="flex items-center justify-end w-full">
             <div onClick={handleMenuClick} className="cursor-pointer">
               <AiOutlineClose size={28} className="text-gold" />
             </div>

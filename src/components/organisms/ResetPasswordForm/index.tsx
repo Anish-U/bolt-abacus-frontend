@@ -29,6 +29,9 @@ const ResetPasswordForm: FC<ResetPasswordFormProps> = ({}) => {
 
   return (
     <div className="flex flex-col gap-y-2">
+      <h1 className="mb-4 text-2xl font-bold desktop:mb-2 desktop:text-xl tablet:mb-8 desktop:font-semibold">
+        Reset Password
+      </h1>
       <FormProvider {...formMethods}>
         <form onSubmit={formMethods.handleSubmit(onSubmit)}>
           <FormInput

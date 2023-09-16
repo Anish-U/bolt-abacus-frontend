@@ -10,7 +10,7 @@ const errorMessage: FC<ErrorMessageProps> = ({ errMessage, iconRequired }) => {
   return (
     <div className="flex items-center gap-1 text-red">
       {iconRequired && <IoAlertCircleOutline size={18} />}
-      <p className="text-sm">{errMessage}</p>
+      <p className="text-sm tablet:text-md desktop:text-sm">{errMessage}</p>
     </div>
   );
 };

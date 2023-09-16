@@ -28,7 +28,10 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
   const isSubmitting: boolean = formMethods.formState.isSubmitting;
 
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="flex flex-col w-fit gap-y-2">
+      <h1 className="mb-4 text-2xl font-bold desktop:mb-2 desktop:text-xl tablet:mb-8 desktop:font-semibold">
+        Sign In
+      </h1>
       <FormProvider {...formMethods}>
         <form onSubmit={formMethods.handleSubmit(onSubmit)}>
           <FormInput

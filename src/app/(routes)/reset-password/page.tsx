@@ -5,8 +5,7 @@ interface ResetPasswordPageProps {}
 
 const ResetPasswordPage: FC<ResetPasswordPageProps> = ({}) => {
   return (
-    <main className="flex flex-col items-center h-screen">
-      <h1>Reset Password Page</h1>
+    <main className="flex flex-col items-center justify-center h-screen">
       <ResetPasswordForm />
     </main>
   );
