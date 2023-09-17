@@ -1,28 +1,56 @@
 'use client';
 
+import { FC, useState } from 'react';
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 
-import { FC } from 'react';
+import ErrorMessage from '@/components/atoms/ErrorMessage';
 import FormButton from '@/components/atoms/FormButton';
 import FormInput from '@/components/atoms/FormInput';
 import { loginSchema } from '@/types/auth';
+import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 interface LoginFormProps {}
 
 const LoginForm: FC<LoginFormProps> = ({}) => {
+  const router = useRouter();
+  const [formError, setFormError] = useState('');
   const formMethods = useForm({
     resolver: zodResolver(loginSchema),
   });
 
   const onSubmit = async (data: FieldValues) => {
-    // TODO: Server call
+    try {
+      const res = await fetch(`/api/login/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data?.email,
+          password: data?.password,
+        }),
+      });
 
-    // eslint-disable-next-line no-console
-    console.log({ signUp: data });
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+      const { user, error } = await res.json();
 
-    formMethods.reset();
+      if (res.status === 200) {
+        // TODO: Add auth sessions
+
+        // eslint-disable-next-line no-console
+        console.log(user);
+
+        router.push('/');
+        formMethods.reset();
+      } else if (res.status === 401) {
+        // TODO: Add red outlines for 401 cases
+        setFormError(error.message);
+      } else {
+        setFormError('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setFormError('Something went wrong. Please try again.');
+    }
   };
 
   const isSubmitting: boolean = formMethods.formState.isSubmitting;
@@ -49,6 +77,11 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
             disabled={isSubmitting}
           />
           <FormButton text="Sign In" isLoading={isSubmitting} />
+          {formError !== '' && (
+            <div className="flex justify-center text-center">
+              <ErrorMessage errMessage={formError} iconRequired={true} />
+            </div>
+          )}
         </form>
       </FormProvider>
     </div>

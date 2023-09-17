@@ -14,12 +14,12 @@ const config: Config = {
     colors: {
       white: '#E1E1E1',
       gold: '#FACB25',
-      black: '#131310',
+      black: '#17150F',
       grey: '#717171',
       red: '#FF515B',
     },
     boxShadow: {
-      gold: '0px 0px 4px 5px rgba(235, 189, 25, 0.40)',
+      golden: '0px 0px 4px 5px rgba(235, 189, 25, 0.40)',
     },
     fontSize: {
       xs: ['12px', { lineHeight: '20px', letterSpacing: '-0.03em' }],

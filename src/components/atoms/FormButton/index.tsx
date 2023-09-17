@@ -12,7 +12,7 @@ const FormButton: FC<FormButtonProps> = ({ text, isLoading }) => {
       <button
         className={`flex items-center justify-center min-w-full px-3 py-3 my-4 font-semibold text-center text-black rounded-lg bg-gold disabled:bg-gold/30
 				${
-          !isLoading && 'duration-150 ease-in-out hover:shadow-gold'
+          !isLoading && 'duration-150 ease-in-out hover:shadow-golden'
         } desktop:mt-4 desktop:px-3 desktop:py-3 desktop:text-md tablet:px-4 tablet:py-4 tablet:text-lg`}
         disabled={isLoading}
       >

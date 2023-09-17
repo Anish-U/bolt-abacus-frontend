@@ -2,6 +2,7 @@
 
 import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 
+import ErrorMessage from '@/components/atoms/ErrorMessage';
 import { FC } from 'react';
 import FormButton from '@/components/atoms/FormButton';
 import FormInput from '@/components/atoms/FormInput';
@@ -49,6 +50,12 @@ const ResetPasswordForm: FC<ResetPasswordFormProps> = ({}) => {
             disabled={isSubmitting}
           />
           <FormButton text="Reset Password" isLoading={isSubmitting} />
+          <div className="flex justify-center text-center">
+            <ErrorMessage
+              errMessage="Invalid credentials"
+              iconRequired={true}
+            />
+          </div>
         </form>
       </FormProvider>
     </div>
