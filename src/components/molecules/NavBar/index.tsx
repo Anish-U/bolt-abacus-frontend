@@ -4,7 +4,7 @@ import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { FC, useState } from 'react';
 
 import BrandLogo from '@/components/atoms/BrandLogo';
-import NavBarButton from '@/components/atoms/NavBarButton';
+import Button from '@/components/atoms/Button';
 import NavBarLink from '@/components/atoms/NavBarLink';
 
 export interface NavBarProps {}
@@ -32,7 +32,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
               Contact
             </NavBarLink>
             <NavBarLink type="desktop" href="/login">
-              <NavBarButton text={'Sign In'} />
+              <Button type="active" text="Sign In" />
             </NavBarLink>
           </ul>
         </div>
@@ -76,7 +76,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
                 Contact
               </NavBarLink>
               <NavBarLink type="mobile" href="/login" onClick={handleMenuClick}>
-                <NavBarButton text={'Sign In'} />
+                <Button type="active" text="Sign In" />
               </NavBarLink>
             </ul>
           </div>
