@@ -78,7 +78,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
           />
           <FormButton text="Sign In" isLoading={isSubmitting} />
           {formError !== '' && (
-            <div className="flex justify-center text-center">
+            <div className="flex justify-center text-xs text-center">
               <ErrorMessage errMessage={formError} iconRequired={true} />
             </div>
           )}

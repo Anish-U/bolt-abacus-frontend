@@ -17,7 +17,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
   };
 
   return (
-    <nav className="w-full h-24">
+    <nav className="w-full h-24 max-h-24">
       <div className="flex items-center justify-between w-full h-full px-4 tablet:px-10 desktop:px-20">
         <BrandLogo />
         <div>

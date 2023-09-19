@@ -8,8 +8,8 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      tablet: '810px',
-      desktop: '1248px',
+      tablet: '768px',
+      desktop: '1124px',
     },
     colors: {
       white: '#E1E1E1',
