@@ -1,6 +1,6 @@
 import Button from '@/components/atoms/Button';
 import { FC } from 'react';
-import Image from 'next/image';
+import HeroImage from '@/components/molecules/HeroImage';
 import { ThunderIcon } from '@/components/atoms/ThunderIcon';
 import styles from './index.module.css';
 
@@ -30,28 +30,7 @@ const HeroSection: FC<HeroSectionProps> = ({}) => {
           <Button text="Contact Us" type="secondary" />
         </div>
       </div>
-      <div className="grid grid-cols-2 grid-rows-3 gap-4 p-6 w-72 tablet:w-[560px] tablet:gap-8 desktop:gap-12">
-        <div className="col-span-1 row-span-2 row-start-2">
-          <Image
-            src="/images/class_four.png"
-            alt=""
-            height={311}
-            width={265}
-            layout="responsive"
-            className="border rounded-lg shadow-boxGold border-gold"
-          />
-        </div>
-        <div className="col-span-1 row-span-2 row-start-1">
-          <Image
-            src="/images/class_one.png"
-            alt=""
-            height={311}
-            width={265}
-            layout="responsive"
-            className="border rounded-lg shadow-boxGold border-gold"
-          />
-        </div>
-      </div>
+      <HeroImage />
     </div>
   );
 };

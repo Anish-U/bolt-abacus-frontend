@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Image from 'next/image';
+import HeroImage from '@/components/molecules/HeroImage';
 import LoginForm from '@/components/organisms/LoginForm';
 import NavBar from '@/components/molecules/NavBar';
 import styles from './index.module.css';
@@ -13,17 +13,11 @@ const LoginPage: FC<LoginPageProps> = ({}) => {
       <div
         className={`${styles.formSection} flex items-center justify-center px-2 desktop:pt-3`}
       >
-        <div className="tablet:h-full desktop:w-[30%] desktop:px-20 desktop:pt-12 tablet:flex tablet:items-center">
+        <div className="desktop:ml-6 tablet:h-full desktop:w-[30%] desktop:px-20 desktop:pt-12 tablet:flex tablet:items-center">
           <LoginForm />
         </div>
         <div className="hidden pl-10 pt-10 items-center justify-center tablet:hidden desktop:w-[70%] desktop:flex">
-          <Image
-            src="https://picsum.photos/700/500/?blur"
-            alt="sd"
-            width={700}
-            height={500}
-            className="rounded-md"
-          />
+          <HeroImage />
         </div>
       </div>
     </main>
