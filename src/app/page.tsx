@@ -1,4 +1,5 @@
 import Carousel from '@/components/organisms/Carousel';
+import CounterSection from '@/components/organisms/CounterSection';
 import { FC } from 'react';
 import HeroSection from '@/components/organisms/HeroSection';
 import NavBar from '@/components/molecules/NavBar';
@@ -11,6 +12,7 @@ const HomePage: FC<HomePageProps> = ({}) => {
       <NavBar />
       <HeroSection />
       <Carousel />
+      <CounterSection />
     </main>
   );
 };
