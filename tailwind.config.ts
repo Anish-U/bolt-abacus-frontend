@@ -15,6 +15,7 @@ const config: Config = {
       white: '#E1E1E1',
       gold: '#FACB25',
       black: '#17150F',
+      coal: '#2E2E2E',
       grey: '#717171',
       red: '#FF515B',
     },
