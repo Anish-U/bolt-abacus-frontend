@@ -1,6 +1,7 @@
 import Button from '@/components/atoms/Button';
 import { FC } from 'react';
 import HeroImage from '@/components/molecules/HeroImage';
+import Link from 'next/link';
 import { ThunderIcon } from '@/components/atoms/ThunderIcon';
 import styles from './index.module.css';
 
@@ -26,8 +27,12 @@ const HeroSection: FC<HeroSectionProps> = ({}) => {
           </span>
         </h1>
         <div className="flex gap-2 w-64 tablet:w-[460px] tablet:gap-5 desktop:w-fit desktop:mt-10">
-          <Button text="Curriculum" type="primary" />
-          <Button text="Contact Us" type="secondary" />
+          <Link href="#curriculum">
+            <Button text="Curriculum" type="primary" />
+          </Link>
+          <Link href="#contact">
+            <Button text="Contact Us" type="secondary" />
+          </Link>
         </div>
       </div>
       <HeroImage />

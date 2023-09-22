@@ -12,11 +12,11 @@ const PricingCard: FC<PricingCardProps> = ({ plan }) => {
     <div
       className={`relative flex flex-col p-8 border desktop:p-12 tablet:px-4 rounded-2xl border-gold shadow-boxGold ${styles.pricingCard}`}
     >
-      <h3 className="text-xl text-gold font-semibold tablet:text-lg desktop:text-2xl">
+      <h3 className="text-lg font-semibold text-gold tablet:text-lg desktop:text-2xl">
         {plan.title}
       </h3>
       {plan.mostPopular && (
-        <p className="absolute top-0 left-1/2 -translate-x-1/2 text-black -translate-y-1/2 rounded-full px-3 py-0.5 text-sm font-bold tracking-wide tablet:text-sm bg-gold">
+        <p className="absolute top-0 left-1/2 -translate-x-1/2 text-black -translate-y-1/2 rounded-full px-3 py-0.5 text-sm font-bold tracking-wide tablet:text-xs bg-gold">
           Most Popular
         </p>
       )}
@@ -31,12 +31,12 @@ const PricingCard: FC<PricingCardProps> = ({ plan }) => {
       <ul className="flex-1 mt-6 space-y-4">
         {plan.features.map((feature) => (
           <li key={feature} className="flex text-sm">
-            <BiCheck className="shrink-0 text-gold text-xl" />
+            <BiCheck className="text-xl shrink-0 text-gold" />
             <span className="ml-3">{feature}</span>
           </li>
         ))}
       </ul>
-      <div className="mt-8 flex text-gold justify-center text-center font-semibold tablet:text-md desktop:text-lg">
+      <div className="flex justify-center mt-8 font-semibold text-center text-gold tablet:text-md desktop:text-lg">
         Payable {plan.total} {plan.currency} <br /> (EMI Available)
       </div>
     </div>
