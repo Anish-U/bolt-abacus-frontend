@@ -1,6 +1,7 @@
 import CounterSection from '@/components/organisms/CounterSection';
 import CurriculumSection from '@/components/organisms/CurriculumSection';
 import { FC } from 'react';
+import Footer from '@/components/molecules/Footer';
 import HeroSection from '@/components/organisms/HeroSection';
 import InfoSection from '@/components/organisms/InfoSection';
 import NavBar from '@/components/molecules/NavBar';
@@ -17,6 +18,7 @@ const HomePage: FC<HomePageProps> = ({}) => {
       <CurriculumSection />
       <PricingSection />
       <CounterSection />
+      <Footer />
     </main>
   );
 };
