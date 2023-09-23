@@ -13,7 +13,7 @@ const PricingSection: FC<PricingSectionProps> = ({}) => {
       <h1 className="pt-2 text-xl font-bold text-center text-gold desktop:text-2xl">
         Pricing
       </h1>
-      <div className="grid grid-cols-1 gap-12 py-16 mx-auto tablet:grid-cols-3 desktop:grid-cols-3">
+      <div className="grid grid-cols-1 gap-12 py-16 mx-auto mt-10 tablet:grid-cols-3 desktop:grid-cols-3">
         {pricingPlans.map((plan) => (
           <PricingCard key={plan.title} plan={plan} />
         ))}

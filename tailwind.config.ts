@@ -18,6 +18,7 @@ const config: Config = {
       coal: '#2E2E2E',
       grey: '#717171',
       red: '#FF515B',
+      green: '#50D96E',
     },
     boxShadow: {
       golden: '0px 0px 4px 5px rgba(235, 189, 25, 0.40)',

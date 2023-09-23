@@ -10,34 +10,47 @@ export interface PricingCardProps {
 const PricingCard: FC<PricingCardProps> = ({ plan }) => {
   return (
     <div
-      className={`relative flex flex-col p-8 border desktop:p-12 tablet:px-4 rounded-2xl border-gold shadow-boxGold ${styles.pricingCard}`}
+      className={`relative flex flex-col border border-gold shadow-boxGold ${
+        styles.pricingCard
+      }
+      ${plan.mostPopular ? 'rounded-b-2xl mt-10 tablet:mt-0 ' : 'rounded-2xl'}
+      `}
     >
-      <h3 className="text-lg font-semibold text-gold tablet:text-lg desktop:text-2xl">
-        {plan.title}
-      </h3>
       {plan.mostPopular && (
-        <p className="absolute top-0 left-1/2 -translate-x-1/2 text-black -translate-y-1/2 rounded-full px-3 py-0.5 text-sm font-bold tracking-wide tablet:text-xs bg-gold">
-          Most Popular
-        </p>
+        <>
+          <div className="absolute top-0 w-[100.5%] -left-[0.25%] p-2 text-sm font-bold text-center text-black -translate-y-full rounded-t-2xl bg-green tablet:text-xs">
+            Most Popular
+          </div>
+        </>
       )}
-      <p className="mt-5 text-sm font-semibold">{plan.description}</p>
-      <div className="p-6 mt-4 -mx-8 tablet:-mx-4 tablet:px-4 desktop:-mx-12 desktop:px-10 bg-gold">
-        <p className="flex items-center text-sm font-semibold text-black">
-          <span className="text-3xl">{plan.price}</span>
-          <span className="ml-3">{plan.currency}</span>
-          <span>{plan.frequency}</span>
-        </p>
-      </div>
-      <ul className="flex-1 mt-6 space-y-4">
-        {plan.features.map((feature) => (
-          <li key={feature} className="flex text-sm">
-            <BiCheck className="text-xl shrink-0 text-gold" />
-            <span className="ml-3">{feature}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="flex justify-center mt-8 font-semibold text-center text-gold tablet:text-md desktop:text-lg">
-        Payable {plan.total} {plan.currency} <br /> (EMI Available)
+      <div className={`flex flex-col p-8 desktop:p-12 tablet:px-4`}>
+        <div className="flex flex-col items-center justify-center gap-5 text-center">
+          <div className="w-40 p-3 px-4 text-sm font-semibold text-black rounded-lg bg-gold tablet:w-28 tablet:py-2 desktop:w-60 desktop:py-3">
+            {plan.title}
+          </div>
+          <p className="font-semibold text-md">{plan.description}</p>
+          <div className="">
+            <div className="flex items-start text-sm font-semibold">
+              <span className="p-1.5 font-medium text-lg">{plan.symbol}</span>
+              <div className="flex items-center">
+                <span className="text-3xl">{plan.price}</span>
+                <span className="mt-3 ml-2 text-grey">{plan.frequency}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr className="border-grey mt-7" />
+        <ul className="flex-1 mt-6 space-y-4">
+          {plan.features.map((feature) => (
+            <li key={feature} className="flex text-sm">
+              <BiCheck className="text-xl shrink-0 text-gold" />
+              <span className="ml-3">{feature}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="flex justify-center mt-8 font-semibold text-center text-gold tablet:text-md desktop:text-lg">
+          Payable {plan.total} {plan.currency} <br /> EMI Available*
+        </div>
       </div>
     </div>
   );
