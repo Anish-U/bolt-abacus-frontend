@@ -6,6 +6,7 @@ import HeroSection from '@/components/organisms/HeroSection';
 import InfoSection from '@/components/organisms/InfoSection';
 import NavBar from '@/components/molecules/NavBar';
 import PricingSection from '@/components/organisms/PricingSection';
+import TestimonialSection from '@/components/organisms/TestimonialSection';
 
 interface HomePageProps {}
 
@@ -18,6 +19,7 @@ const HomePage: FC<HomePageProps> = ({}) => {
       <CurriculumSection />
       <PricingSection />
       <CounterSection />
+      <TestimonialSection />
       <Footer />
     </main>
   );

@@ -16,7 +16,13 @@ const FormButton: FC<FormButtonProps> = ({ text, isLoading }) => {
         } desktop:mt-4 desktop:px-3 desktop:py-3 desktop:text-md tablet:px-4 tablet:py-4 tablet:text-lg`}
         disabled={isLoading}
       >
-        {isLoading ? <ImSpinner8 className="animate-spin" size={24} /> : text}
+        {isLoading ? (
+          <div className="flex items-center justify-center">
+            <ImSpinner8 className="animate-spin" size={24} />
+          </div>
+        ) : (
+          text
+        )}
       </button>
     </div>
   );
