@@ -1,6 +1,6 @@
 export const pricingPlans = [
   {
-    title: 'Basic',
+    title: 'Super 30 Edition',
     description: '1-5 levels or 6-10 levels',
     currency: 'INR',
     symbol: '₹',
@@ -16,7 +16,7 @@ export const pricingPlans = [
     mostPopular: false,
   },
   {
-    title: 'Premium',
+    title: '15 Rangers Squad',
     description: '1-5 levels or 6-10 levels',
     currency: 'INR',
     symbol: '₹',
@@ -32,7 +32,7 @@ export const pricingPlans = [
     mostPopular: true,
   },
   {
-    title: 'Ultimate',
+    title: 'Perfect X',
     description: '1-5 levels or 6-10 levels',
     currency: 'INR',
     symbol: '₹',

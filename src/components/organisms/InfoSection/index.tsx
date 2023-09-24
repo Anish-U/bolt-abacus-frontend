@@ -16,7 +16,7 @@ export interface InfoSectionProps {}
 
 const InfoSection: FC<InfoSectionProps> = ({}) => {
   return (
-    <div className="p-12 tablet:p-10 desktop:py-12 desktop:px-24">
+    <div id="about" className="p-12 tablet:p-10 desktop:py-12 desktop:px-24">
       <div className="grid grid-cols-1 gap-12 py-16 mx-auto tablet:grid-cols-3 tablet:gap-6 desktop:grid-cols-3 desktop:gap-16">
         <InfoCard
           type="primary"

@@ -22,14 +22,11 @@ const NavBar: FC<NavBarProps> = ({}) => {
         <BrandLogo />
         <div>
           <ul className="items-center hidden tablet:flex desktop:flex">
-            <NavBarLink type="desktop" href="/about">
+            <NavBarLink type="desktop" href="/#about">
               About
             </NavBarLink>
-            <NavBarLink type="desktop" href="/services">
-              Our Services
-            </NavBarLink>
-            <NavBarLink type="desktop" href="/contact">
-              Contact
+            <NavBarLink type="desktop" href="/#pricing">
+              Services
             </NavBarLink>
             <NavBarLink type="desktop" href="/login">
               <Button type="active" text="Sign In" />
@@ -57,23 +54,6 @@ const NavBar: FC<NavBarProps> = ({}) => {
             <ul>
               <NavBarLink type="mobile" href="/" onClick={handleMenuClick}>
                 Home
-              </NavBarLink>
-              <NavBarLink type="mobile" href="/about" onClick={handleMenuClick}>
-                About
-              </NavBarLink>
-              <NavBarLink
-                type="mobile"
-                href="/services"
-                onClick={handleMenuClick}
-              >
-                Our Services
-              </NavBarLink>
-              <NavBarLink
-                type="mobile"
-                href="/contact"
-                onClick={handleMenuClick}
-              >
-                Contact
               </NavBarLink>
               <NavBarLink type="mobile" href="/login" onClick={handleMenuClick}>
                 <Button type="active" text="Sign In" />

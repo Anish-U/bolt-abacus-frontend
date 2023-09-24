@@ -21,7 +21,7 @@ const CurriculumSection: FC<CurriculumSectionProps> = ({}) => {
   return (
     <div
       id="curriculum"
-      className="p-12 tablet:p-10 desktop:py-16 desktop:pt-10 desktop:px-24"
+      className="p-12 py-5 tablet:p-10 tablet:py-6 desktop:py-8 desktop:px-24"
     >
       <h1 className="pt-2 text-xl font-bold text-center text-white desktop:text-2xl">
         Unlocking <span className="text-gold">Abacus Mastery</span>: Our

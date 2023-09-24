@@ -10,7 +10,7 @@ export interface LevelProps {
 
 const Level: FC<LevelProps> = ({ title, points, lastLevel }) => {
   return (
-    <div className="flex justify-center gap-6 desktop:gap-24">
+    <div className="flex gap-6 desktop:gap-24">
       <div className="relative shrink-0 desktop:ml-10">
         <Image
           src={dotImage}
@@ -23,7 +23,7 @@ const Level: FC<LevelProps> = ({ title, points, lastLevel }) => {
           <div className="absolute bg-black h-full p-1 left-1/2 top-3 -z-10 w-8 -translate-x-1/2"></div>
         )}
       </div>
-      <div className="pt-1 pb-16 pl-4 desktop:pt-0">
+      <div className="pt-1 pb-10 pl-4 desktop:pt-0">
         <h2 className="text-lg font-normal text-gold desktop:text-xl">
           {title}
         </h2>

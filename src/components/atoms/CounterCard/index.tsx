@@ -46,7 +46,7 @@ const CounterCard: FC<CounterCardProps> = ({ from, to, category }) => {
     if (!node) return;
 
     const controls = animate(from, to, {
-      duration: 1,
+      duration: 4,
       onUpdate(value) {
         node.textContent = Math.round(value).toString();
       },
@@ -58,7 +58,7 @@ const CounterCard: FC<CounterCardProps> = ({ from, to, category }) => {
   return (
     <>
       <div
-        className={`flex justify-start gap-2 p-8 h-32 desktop:h-36 desktop:p-12 tablet:px-4  text-center border border-gold shadow-boxGold rounded-xl ${styles.counterCard}`}
+        className={`flex justify-start gap-2 p-8 h-32 desktop:h-36 desktop:p-12 tablet:px-4  text-center border border-gold rounded-xl ${styles.counterCard}`}
       >
         <div className="flex items-center justify-center w-2/6 p-2 text-sm font-semibold text-gold tablet:text-md desktop:text-lg">
           <motion.p ref={nodeRef} /> +

@@ -10,7 +10,7 @@ export interface PricingCardProps {
 const PricingCard: FC<PricingCardProps> = ({ plan }) => {
   return (
     <div
-      className={`relative flex flex-col border border-gold shadow-boxGold ${
+      className={`relative flex flex-col border border-gold ${
         styles.pricingCard
       }
       ${plan.mostPopular ? 'rounded-b-2xl mt-10 tablet:mt-0 ' : 'rounded-2xl'}

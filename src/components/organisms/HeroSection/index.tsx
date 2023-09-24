@@ -30,7 +30,7 @@ const HeroSection: FC<HeroSectionProps> = ({}) => {
           <Link href="#curriculum">
             <Button text="Curriculum" type="primary" />
           </Link>
-          <Link href="#contact">
+          <Link href="#footer">
             <Button text="Contact Us" type="secondary" />
           </Link>
         </div>

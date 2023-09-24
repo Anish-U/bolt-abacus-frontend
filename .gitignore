@@ -13,7 +13,9 @@
 /out/
 
 # production
-/build
+/build/
+/.open-next/
+/.sst/
 
 # misc
 .DS_Store

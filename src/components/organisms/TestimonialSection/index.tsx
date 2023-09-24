@@ -8,6 +8,7 @@ import { FC, useRef } from 'react';
 import Slider from '@ant-design/react-slick';
 import SliderButton from '@/components/atoms/SliderButton';
 import TestimonialCard from '@/components/molecules/TestimonialCard';
+import { testimonials } from '@/helpers/testimonialDetails';
 
 export interface TestimonialSectionProps {}
 
@@ -31,9 +32,9 @@ const TestimonialSection: FC<TestimonialSectionProps> = ({}) => {
       <div className="p-12 tablet:p-10 desktop:pt-12 desktop:px-28 tablet:pb-24">
         <div className="relative">
           <Slider {...settings}>
-            <TestimonialCard />
-            <TestimonialCard />
-            <TestimonialCard />
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard key={index} text={testimonial.text} />
+            ))}
           </Slider>
           <SliderButton
             onClick={() => {
