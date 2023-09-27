@@ -42,7 +42,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
           <AiOutlineMenu size={28} className="text-gold" />
         </div>
         <div
-          className={`z-1 fixed w-[100%] h-screen p-10 top-0 tablet:hidden desktop:hidden bg-black ease-in duration-500
+          className={`fixed z-[99] w-[100%] h-screen overflow-hidden p-10 top-0 tablet:hidden desktop:hidden bg-black ease-in duration-500
 					${menuOpen ? 'left-0' : 'left-[100%] opacity-0'}`}
         >
           <div className="flex items-center justify-end w-full">
