@@ -28,10 +28,14 @@ const HeroSection: FC<HeroSectionProps> = ({}) => {
         </h1>
         <div className="flex gap-2 w-64 tablet:w-[460px] tablet:gap-5 desktop:w-fit desktop:mt-10">
           <Link href="#curriculum">
-            <Button text="Curriculum" type="primary" />
+            <div className="w-[120px] desktop:w-[187px]">
+              <Button text="Curriculum" type="primary" />
+            </div>
           </Link>
           <Link href="#footer">
-            <Button text="Contact Us" type="secondary" />
+            <div className="w-[120px] desktop:w-[187px]">
+              <Button text="Contact Us" type="secondary" />
+            </div>
           </Link>
         </div>
       </div>

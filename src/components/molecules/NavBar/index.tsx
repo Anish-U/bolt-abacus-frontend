@@ -29,7 +29,9 @@ const NavBar: FC<NavBarProps> = ({}) => {
               Services
             </NavBarLink>
             <NavBarLink type="desktop" href="/login">
-              <Button type="active" text="Sign In" />
+              <div className="w-[120px] desktop:w-[187px]">
+                <Button type="active" text="Sign In" />
+              </div>
             </NavBarLink>
           </ul>
         </div>
@@ -56,7 +58,9 @@ const NavBar: FC<NavBarProps> = ({}) => {
                 Home
               </NavBarLink>
               <NavBarLink type="mobile" href="/login" onClick={handleMenuClick}>
-                <Button type="active" text="Sign In" />
+                <div className="w-[120px] desktop:w-[187px]">
+                  <Button type="active" text="Sign In" />
+                </div>
               </NavBarLink>
             </ul>
           </div>
