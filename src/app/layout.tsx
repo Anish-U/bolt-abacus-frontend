@@ -1,10 +1,14 @@
+'use client';
+
 import './globals.css';
 
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 
 import { DM_Sans } from 'next/font/google';
 import type { Metadata } from 'next';
+import { getCookie } from 'cookies-next';
 import localFont from 'next/font/local';
+import { useAuthStore } from '@/store/authStore';
 
 interface LayoutProps {
   children: ReactNode;
@@ -74,12 +78,44 @@ export const metadata: Metadata = {
 };
 
 const Layout: FC<LayoutProps> = ({ children }) => {
+  const token = getCookie('token');
+  const setAuthentication = useAuthStore((state) => state.setAuthentication);
+  const setUser = useAuthStore((state) => state.setUser);
+
+  useEffect(() => {
+    if (token) {
+      setUser({
+        userId: 1,
+        name: {
+          first: 'Anish',
+          last: 'Ummenthala',
+        },
+      });
+      setAuthentication(true);
+    } else {
+      setUser(null);
+      setAuthentication(false);
+    }
+  }, [setAuthentication, setUser, token]);
+
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
+
   return (
     <html lang="en">
       <body
         className={`${gilroy.variable} ${dmSans.variable} font-gilroy bg-black text-white text-md`}
       >
-        {children}
+        {domLoaded ? (
+          children
+        ) : (
+          <main className="h-screen flex justify-around items-center">
+            <h1 className="text-lg font-medium font-sans">Loading...</h1>
+          </main>
+        )}
       </body>
     </html>
   );

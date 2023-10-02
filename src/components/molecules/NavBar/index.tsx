@@ -6,6 +6,9 @@ import { FC, useState } from 'react';
 import BrandLogo from '@/components/atoms/BrandLogo';
 import Button from '@/components/atoms/Button';
 import NavBarLink from '@/components/atoms/NavBarLink';
+import ProfileIcon from '@/components/atoms/ProfileIcon';
+import { deleteCookie } from 'cookies-next';
+import { useAuthStore } from '@/store/authStore';
 
 export interface NavBarProps {}
 
@@ -14,6 +17,14 @@ const NavBar: FC<NavBarProps> = ({}) => {
 
   const handleMenuClick = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const user = useAuthStore((state) => state.user);
+  const logout = useAuthStore((state) => state.logout);
+
+  const logOutUser = async () => {
+    await logout();
+    deleteCookie('token');
   };
 
   return (
@@ -28,11 +39,24 @@ const NavBar: FC<NavBarProps> = ({}) => {
             <NavBarLink type="desktop" href="/#pricing">
               Services
             </NavBarLink>
-            <NavBarLink type="desktop" href="/login">
-              <div className="w-[120px] desktop:w-[187px]">
-                <Button type="active" text="Sign In" />
-              </div>
-            </NavBarLink>
+            {!user ? (
+              <NavBarLink type="desktop" href="/login">
+                <div className="w-[120px] desktop:w-[187px]">
+                  <Button type="active" text="Sign In" />
+                </div>
+              </NavBarLink>
+            ) : (
+              <>
+                <NavBarLink type="desktop" href="/login" onclick={logOutUser}>
+                  Log out
+                </NavBarLink>
+                <NavBarLink type="desktop" href="/profile">
+                  <ProfileIcon
+                    text={user.name.first.charAt(0) + user.name.last.charAt(0)}
+                  />
+                </NavBarLink>
+              </>
+            )}
           </ul>
         </div>
         <div
@@ -54,14 +78,33 @@ const NavBar: FC<NavBarProps> = ({}) => {
           </div>
           <div className="flex-col">
             <ul>
-              <NavBarLink type="mobile" href="/" onClick={handleMenuClick}>
+              <NavBarLink type="mobile" href="/" onclick={handleMenuClick}>
                 Home
               </NavBarLink>
-              <NavBarLink type="mobile" href="/login" onClick={handleMenuClick}>
-                <div className="w-[120px] desktop:w-[187px]">
-                  <Button type="active" text="Sign In" />
-                </div>
-              </NavBarLink>
+              {!user ? (
+                <NavBarLink
+                  type="mobile"
+                  href="/login"
+                  onclick={handleMenuClick}
+                >
+                  <div className="w-[120px] desktop:w-[187px]">
+                    <Button type="active" text="Sign In" />
+                  </div>
+                </NavBarLink>
+              ) : (
+                <>
+                  <NavBarLink type="mobile" href="/login" onclick={logOutUser}>
+                    Log out
+                  </NavBarLink>
+                  <NavBarLink type="mobile" href="/profile">
+                    <ProfileIcon
+                      text={
+                        user.name.first.charAt(0) + user.name.last.charAt(0)
+                      }
+                    />
+                  </NavBarLink>
+                </>
+              )}
             </ul>
           </div>
         </div>

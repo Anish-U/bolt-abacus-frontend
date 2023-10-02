@@ -6,12 +6,12 @@ export interface NavBarLinkProps {
   type: 'mobile' | 'desktop';
   href: string;
   children: ReactNode;
-  onClick?: () => void;
+  onclick?: () => void;
 }
 
-const NavBarLink: FC<NavBarLinkProps> = ({ type, href, children }) => {
+const NavBarLink: FC<NavBarLinkProps> = ({ type, href, children, onclick }) => {
   return (
-    <Link href={href}>
+    <Link href={href} onClick={onclick}>
       {type === 'mobile' && (
         <li className="py-4 font-semibold text-lg">{children}</li>
       )}
