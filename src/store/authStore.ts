@@ -1,11 +1,11 @@
 import { create } from 'zustand';
 
 interface User {
-  userId: number;
   name: {
     first: string;
     last: string;
   };
+  role: 'student' | 'teacher';
 }
 
 export interface AuthStoreInterface {

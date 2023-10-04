@@ -40,41 +40,28 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
       const { user, error } = await res.json();
 
       if (res.status === 200) {
-        // TODO: Add auth sessions
+        router.push('/dashboard');
+        setCookie('token', user?.token);
+        const userData = {
+          name: {
+            first: user?.firstName,
+            last: user?.lastName,
+          },
+          role: user?.role,
+        };
+        setCookie('user', userData);
+        setUser(userData);
+        setAuthentication(true);
 
-        // eslint-disable-next-line no-console
-        console.log(user);
-
-        router.push('/');
         formMethods.reset();
       } else if (res.status === 401) {
         // TODO: Add red outlines for 401 cases
         setFormError(error.message);
       } else {
-        setUser({
-          userId: 1,
-          name: {
-            first: 'Anish',
-            last: 'Ummenthala',
-          },
-        });
-        setAuthentication(true);
-        setCookie('token', 'TOKEN');
-        router.push('/dashboard'); // redirect to home page
-        // setFormError('Something went wrong. Please try again.');
+        setFormError('Something went wrong. Please try again.');
       }
     } catch (err) {
-      setUser({
-        userId: 1,
-        name: {
-          first: 'Anish',
-          last: 'Ummenthala',
-        },
-      });
-      setAuthentication(true);
-      setCookie('token', 'TOKEN');
-      router.push('/dashboard'); // redirect to home page
-      // setFormError('Something went wrong. Please try again.');
+      setFormError('Something went wrong. Please try again.');
     }
   };
 

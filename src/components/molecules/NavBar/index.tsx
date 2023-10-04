@@ -25,6 +25,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
   const logOutUser = async () => {
     await logout();
     deleteCookie('token');
+    deleteCookie('user');
   };
 
   return (

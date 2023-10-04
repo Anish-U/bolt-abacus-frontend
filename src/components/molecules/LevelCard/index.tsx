@@ -11,9 +11,15 @@ export interface LevelCardProps {
   type: 'finished' | 'inprogress' | 'locked';
   level: number;
   description: string;
+  progress?: number;
 }
 
-const LevelCard: FC<LevelCardProps> = ({ type, level, description }) => {
+const LevelCard: FC<LevelCardProps> = ({
+  type,
+  level,
+  description,
+  progress,
+}) => {
   return (
     <div
       className={`relative p-6 rounded-lg border-2 
@@ -56,7 +62,7 @@ const LevelCard: FC<LevelCardProps> = ({ type, level, description }) => {
         )}
         {type === 'inprogress' && (
           <>
-            <ProgressBar color="green" percentage={50} />
+            <ProgressBar color="green" percentage={progress!} />
             <div className="pt-6">
               <Link href={'#class'}>
                 <Button type="primary" text="Resume Learning" />
