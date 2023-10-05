@@ -1,11 +1,10 @@
 import { NextResponse } from 'next/server';
 
-// TODO: Refactor by adding envs & constants
 export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const res = await fetch(`http://localhost:8000/login/`, {
+    const res = await fetch(`${process.env.BACKEND_URL}/login/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

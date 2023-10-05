@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
 
-// TODO: Refactor by adding envs & constants
 export async function GET(req: Request) {
   try {
-    const res = await fetch(`http://localhost:8000/levels/`, {
+    const res = await fetch(`${process.env.BACKEND_URL}/levels/`, {
       method: 'GET',
       headers: req.headers,
     });
