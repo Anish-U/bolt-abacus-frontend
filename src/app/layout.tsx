@@ -9,7 +9,6 @@ import LoadingSection from '@/components/organisms/LoadingSection';
 import type { Metadata } from 'next';
 import { getCookie } from 'cookies-next';
 import localFont from 'next/font/local';
-import { redirect } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
 
 interface LayoutProps {

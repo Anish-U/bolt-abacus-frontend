@@ -4,7 +4,7 @@ export async function GET(req: Request) {
   try {
     const res = await fetch(`${process.env.BACKEND_URL}/levels/`, {
       method: 'GET',
-      headers: req.headers,
+      headers: [['AUTH-TOKEN', req.headers.get('AUTH-TOKEN')!]],
     });
 
     const data = await res.json();
@@ -22,7 +22,7 @@ export async function GET(req: Request) {
   } catch (error) {
     return NextResponse.json(
       {
-        error: { message: 'Something went wrong. Please try again' },
+        error: { message: error },
       },
       { status: 500 }
     );

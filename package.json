@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export -o build",
+    "dev:sst": "sst bind next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
@@ -12,6 +13,9 @@
     "coverage": "jest --collect-coverage",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "resolutions": {
+    "string-width": "4.2.3"
   },
   "dependencies": {
     "@ant-design/react-slick": "^1.0.2",
@@ -21,6 +25,8 @@
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
+    "aws-cdk-lib": "2.95.1",
+    "constructs": "10.2.69",
     "cookies-next": "^4.0.0",
     "eslint": "^8.0.1",
     "eslint-config-next": "^13.4.19",
@@ -31,7 +37,9 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.46.1",
     "react-icons": "^4.11.0",
+    "sharp": "^0.32.6",
     "slick-carousel": "^1.8.1",
+    "sst": "^2.26.11",
     "tailwindcss": "3.3.3",
     "typescript": "*",
     "zod": "^3.22.2",
