@@ -16,21 +16,16 @@ export function middleware(request: NextRequest) {
 
   const token = request.cookies.get('token')?.value;
   const user = request.cookies.get('user')?.value;
-  const allowedRoutes = ['/login'];
-  const isRouteAllowed = allowedRoutes.some((prefix) =>
-    pathname.startsWith(prefix)
-  );
 
-  if (!token || !user) {
-    if (isRouteAllowed) {
-      // Set user
+  const restrictedRoutesForLoggedInUser = pathname === '/login';
 
-      return NextResponse.next();
+  if (restrictedRoutesForLoggedInUser) {
+    if (token && user) {
+      return NextResponse.redirect(new URL('/dashboard', request.url));
     }
-    return NextResponse.redirect(new URL('/login', request.url));
-  }
-
-  if (isRouteAllowed && token && user) {
-    return NextResponse.redirect(new URL('/dashboard', request.url));
+  } else {
+    if (!token || !user) {
+      return NextResponse.redirect(new URL('/login', request.url));
+    }
   }
 }
