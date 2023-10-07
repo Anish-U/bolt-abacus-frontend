@@ -12,7 +12,8 @@
     "test:watch": "jest --watch",
     "coverage": "jest --collect-coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "deploy": "yarn sst deploy --stage prod"
   },
   "resolutions": {
     "string-width": "4.2.3"

@@ -1,10 +1,19 @@
 import { FC } from 'react';
 import HeroImage from '@/components/molecules/HeroImage';
 import LoginForm from '@/components/organisms/LoginForm';
+import { Metadata } from 'next';
 import NavBar from '@/components/molecules/NavBar';
 import styles from './index.module.css';
 
 interface LoginPageProps {}
+
+export const metadata: Metadata = {
+  title: 'BoltAbacus | Login',
+  description: 'The perfect app to learn and master abacus!',
+  icons: {
+    icon: 'icon.png',
+  },
+};
 
 const LoginPage: FC<LoginPageProps> = ({}) => {
   return (

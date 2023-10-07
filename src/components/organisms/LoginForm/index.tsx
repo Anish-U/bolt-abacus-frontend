@@ -52,8 +52,6 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
         setCookie('user', userData);
         setUser(userData);
         setAuthentication(true);
-
-        formMethods.reset();
       } else if (res.status === 401) {
         // TODO: Add red outlines for 401 cases
         setFormError(error.message);
