@@ -18,6 +18,7 @@ const RoadmapSection: FC<RoadmapSectionProps> = ({
     if (currentLevel > i) {
       classCards.push(
         <LevelCard
+          key={i}
           type="finished"
           description={`Classes Completed`}
           level={i}
@@ -26,6 +27,7 @@ const RoadmapSection: FC<RoadmapSectionProps> = ({
     } else if (currentLevel == i) {
       classCards.push(
         <LevelCard
+          key={i}
           type="inprogress"
           description={`Class ${currentClass}`}
           progress={progress}
@@ -34,7 +36,12 @@ const RoadmapSection: FC<RoadmapSectionProps> = ({
       );
     } else {
       classCards.push(
-        <LevelCard type="locked" description={`Class Locked`} level={i} />
+        <LevelCard
+          key={i}
+          type="locked"
+          description={`Class Locked`}
+          level={i}
+        />
       );
     }
   }

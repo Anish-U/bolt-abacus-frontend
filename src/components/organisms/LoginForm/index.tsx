@@ -40,7 +40,7 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
       const { user, error } = await res.json();
 
       if (res.status === 200) {
-        router.push('/dashboard');
+        router.push(`${user?.role}/dashboard`);
         setCookie('token', user?.token);
         const userData = {
           name: {

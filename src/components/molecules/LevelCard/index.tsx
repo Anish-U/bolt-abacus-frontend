@@ -52,7 +52,7 @@ const LevelCard: FC<LevelCardProps> = ({
         </p>
         {type === 'finished' && (
           <>
-            <ProgressBar color="blue" percentage={100} />
+            <ProgressBar type="blue" percentage={100} />
             <div className="pt-6">
               <Link href={'#report'}>
                 <Button type="black" text="Report" />
@@ -62,9 +62,9 @@ const LevelCard: FC<LevelCardProps> = ({
         )}
         {type === 'inprogress' && (
           <>
-            <ProgressBar color="green" percentage={progress!} />
+            <ProgressBar type="green" percentage={progress!} />
             <div className="pt-6">
-              <Link href={'#class'}>
+              <Link href={`/student/level/${level}`}>
                 <Button type="primary" text="Resume Learning" />
               </Link>
             </div>
@@ -72,7 +72,7 @@ const LevelCard: FC<LevelCardProps> = ({
         )}
         {type === 'locked' && (
           <>
-            <ProgressBar color="blue" percentage={0} />
+            <ProgressBar type="blue" percentage={0} />
             <div className="pt-6">
               <Button type="primary" text="Start Learning" />
             </div>

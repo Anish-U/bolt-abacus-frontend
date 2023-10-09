@@ -27,9 +27,9 @@ const InfoSection: FC<InfoSectionProps> = ({
           <p className="py-2 font-medium text-md desktop:text-lg">
             {description}
           </p>
-          <ProgressBar color="green" percentage={progress} />
+          <ProgressBar type="green" percentage={progress} />
           <div className="pt-6">
-            <Link href={'#class'}>
+            <Link href={`/student/level/${currentLevel}`}>
               <Button type="primary" text="Resume Learning" />
             </Link>
           </div>
