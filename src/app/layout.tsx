@@ -6,6 +6,7 @@ import { FC, ReactNode, useEffect, useState } from 'react';
 
 import { DM_Sans } from 'next/font/google';
 import LoadingSection from '@/components/organisms/LoadingSection';
+import type { Metadata } from 'next';
 import { getCookie } from 'cookies-next';
 import localFont from 'next/font/local';
 import { useAuthStore } from '@/store/authStore';
@@ -68,6 +69,14 @@ const gilroy = localFont({
   display: 'swap',
   variable: '--font-gilroy',
 });
+
+export const metadata: Metadata = {
+  title: 'BoltAbacus',
+  description: 'The perfect app to learn and master abacus!',
+  icons: {
+    icon: 'icon.png',
+  },
+};
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   const token = getCookie('token');

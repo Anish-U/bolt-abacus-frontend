@@ -39,7 +39,7 @@ const LevelSection: FC<LevelSectionProps> = ({ level }) => {
           }),
         });
 
-        const { data, error: err } = await res.json();
+        const { data, err } = await res.json();
 
         if (res.status === 200) {
           setLevelSchema(data?.schema);
