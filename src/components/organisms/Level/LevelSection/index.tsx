@@ -9,6 +9,7 @@ import { FC, ReactNode, useEffect, useState } from 'react';
 import ErrorBox from '@/components/molecules/ErrorBox';
 import LoadingSection from '../../LoadingSection';
 import { getCookie } from 'cookies-next';
+import { getErrorMessage } from '@/helpers/error';
 
 export interface LevelSectionProps {
   level: number;
@@ -16,7 +17,8 @@ export interface LevelSectionProps {
 
 const LevelSection: FC<LevelSectionProps> = ({ level }) => {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [fallBackLink, setFallBackLink] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [isLatestLevel, setIsLatestLevel] = useState<boolean>(false);
   const [levelSchema, setLevelSchema] = useState<Array<ClassSchema>>();
   const [latestClass, setLatestClass] = useState<number>();
@@ -27,6 +29,12 @@ const LevelSection: FC<LevelSectionProps> = ({ level }) => {
     const getLevelData = async () => {
       try {
         const authToken = getCookie('token');
+        const user = getCookie('user');
+
+        if (!authToken || !user) {
+          setFallBackLink(true);
+          throw new Error('Please Login to view this page');
+        }
 
         const res = await fetch(`/api/level/`, {
           method: 'POST',
@@ -39,7 +47,7 @@ const LevelSection: FC<LevelSectionProps> = ({ level }) => {
           }),
         });
 
-        const { data, err } = await res.json();
+        const { data, error: err } = await res.json();
 
         if (res.status === 200) {
           setLevelSchema(data?.schema);
@@ -52,6 +60,7 @@ const LevelSection: FC<LevelSectionProps> = ({ level }) => {
           setLoading(false);
         }
       } catch (err) {
+        setError(getErrorMessage(err));
         setLoading(false);
       }
     };
@@ -65,12 +74,13 @@ const LevelSection: FC<LevelSectionProps> = ({ level }) => {
   ) => {
     const classAccordions: Array<ReactNode> = [];
     let foundLatestClass = false;
-    schema?.map((classSchema) => {
+    schema?.map((classSchema, index) => {
       if (!latestLevel) {
         classAccordions.push(
           <ClassAccordion
             key={classSchema.classId}
             levelId={level}
+            classNumber={index + 1}
             type="completed"
             classSchema={classSchema}
           />
@@ -80,6 +90,7 @@ const LevelSection: FC<LevelSectionProps> = ({ level }) => {
           <ClassAccordion
             key={classSchema.classId}
             levelId={level}
+            classNumber={index + 1}
             type="locked"
             classSchema={classSchema}
           />
@@ -90,6 +101,7 @@ const LevelSection: FC<LevelSectionProps> = ({ level }) => {
           <ClassAccordion
             key={classSchema.classId}
             levelId={level}
+            classNumber={index + 1}
             type="inprogress"
             progress={progress}
             classSchema={classSchema}
@@ -100,6 +112,7 @@ const LevelSection: FC<LevelSectionProps> = ({ level }) => {
           <ClassAccordion
             key={classSchema.classId}
             levelId={level}
+            classNumber={index + 1}
             type="completed"
             classSchema={classSchema}
           />
@@ -117,7 +130,8 @@ const LevelSection: FC<LevelSectionProps> = ({ level }) => {
           {error ? (
             <ErrorBox
               errorMessage={error || 'Something went wrong'}
-              link="/student/dashboard"
+              link={fallBackLink ? '/login' : '/student/dashboard'}
+              buttonText={fallBackLink ? 'Login Now' : 'Go Back'}
             />
           ) : (
             <div className="flex flex-col gap-4 p-6 justify-evenly tablet:justify-between tablet:items-center tablet:p-10 tablet:gap-8 desktop:p-20">

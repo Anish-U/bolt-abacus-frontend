@@ -26,6 +26,7 @@ export interface ClassSchema {
 export interface ClassAccordionProps {
   type: 'completed' | 'inprogress' | 'locked';
   levelId: number;
+  classNumber: number;
   classSchema: ClassSchema;
   progress?: Array<ClassProgressSchema>;
 }
@@ -52,7 +53,7 @@ const createAccordionRows = (
           classwork={'green'}
           homework={'green'}
           text={`Topic ${i + 1}`}
-          link={`/student/quiz?level=${levelId}&class=${classSchema.classId}&topic=${topicId}`}
+          link={`/student/quiz/${levelId}/${classSchema.classId}/${topicId}`}
         />
       );
     } else {
@@ -63,7 +64,7 @@ const createAccordionRows = (
           }
           homework={homework ? (homework.isPass ? 'green' : 'yellow') : 'grey'}
           text={`Topic ${i + 1}`}
-          link={`/student/quiz?level=${levelId}&class=${classSchema.classId}&topic=${topicId}`}
+          link={`/student/quiz/${levelId}/${classSchema.classId}/${topicId}`}
         />
       );
     }
@@ -75,6 +76,7 @@ const ClassAccordion: FC<ClassAccordionProps> = ({
   type,
   classSchema,
   levelId,
+  classNumber,
   progress,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -85,7 +87,7 @@ const ClassAccordion: FC<ClassAccordionProps> = ({
     >
       <div className="flex flex-col gap-5 tablet:flex-row tablet:gap-10">
         <div className="flex flex-col flex-1 gap-5 tablet:flex-row tablet:gap-10 tablet:justify-center tablet:items-center">
-          <p className="text-lg font-medium">Class {classSchema.classId}</p>
+          <p className="text-lg font-medium">Class {classNumber}</p>
           <div className="flex items-center justify-center flex-1">
             {type === 'completed' && (
               <ProgressBar percentage={100} type={'blue'} />
@@ -162,7 +164,7 @@ const ClassAccordion: FC<ClassAccordionProps> = ({
                 <AccordionButton
                   type="grey"
                   text={'Test'}
-                  link={`/student/quiz?level=${levelId}&class=${classSchema.classId}&type=test`}
+                  link={`/student/test/${levelId}/${classSchema.classId}`}
                   // disabled={true}
                 />
               </div>

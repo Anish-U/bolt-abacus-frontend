@@ -35,12 +35,12 @@ const ClassAccordionRow: FC<ClassAccordionRowProps> = ({
         <AccordionButton
           type={classwork}
           text={classworkText}
-          link={link && `${link}&type=classwork`}
+          link={link && `${link}/classwork`}
         />
         <AccordionButton
           type={homework}
           text={homeworkText}
-          link={link && `${link}&type=homework`}
+          link={link && `${link}/homework`}
         />
       </div>
     </div>
