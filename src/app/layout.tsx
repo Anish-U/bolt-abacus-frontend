@@ -73,6 +73,9 @@ const gilroy = localFont({
 export const metadata: Metadata = {
   title: 'BoltAbacus',
   description: 'The perfect app to learn and master abacus!',
+  icons: {
+    icon: 'icon.png',
+  },
 };
 
 const Layout: FC<LayoutProps> = ({ children }) => {
@@ -100,7 +103,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <html lang="en">
       <body
-        className={`${gilroy.variable} ${dmSans.variable} font-gilroy bg-black text-white text-md min-h-screen`}
+        className={`${gilroy.variable} ${dmSans.variable} font-gilroy bg-black text-white text-md`}
       >
         {domLoaded ? (
           children

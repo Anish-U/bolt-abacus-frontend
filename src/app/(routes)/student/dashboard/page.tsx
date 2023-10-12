@@ -9,6 +9,9 @@ interface DashboardPageProps {}
 export const metadata: Metadata = {
   title: 'BoltAbacus | Dashboard',
   description: 'The perfect app to learn and master abacus!',
+  icons: {
+    icon: 'icon.png',
+  },
 };
 
 const DashboardPage: FC<DashboardPageProps> = ({}) => {

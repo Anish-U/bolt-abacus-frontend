@@ -3,7 +3,6 @@ import Footer from '@/components/molecules/Footer';
 import LevelSection from '@/components/organisms/Level/LevelSection';
 import { Metadata } from 'next';
 import NavBar from '@/components/molecules/NavBar';
-import { isValidLevelId } from '@/helpers/student';
 import { redirect } from 'next/navigation';
 
 interface LevelPageProps {
@@ -11,23 +10,24 @@ interface LevelPageProps {
 }
 
 export function generateMetadata({ params }: LevelPageProps): Metadata {
-  if (!isValidLevelId(params.id)) {
+  const level = parseInt(params.id);
+  if (isNaN(level) || level > 10 || level < 0) {
     return {
       title: `BoltAbacus | Invalid Level`,
     };
   } else {
     return {
-      title: `BoltAbacus | Level ${params.id}`,
+      title: `BoltAbacus | Level ${level}`,
     };
   }
 }
 
 const LevelPage: FC<LevelPageProps> = ({ params }) => {
-  if (!isValidLevelId(params.id)) {
+  const level = parseInt(params.id);
+
+  if (isNaN(level) || level > 10 || level < 0) {
     redirect('/student/dashboard');
   }
-
-  const level = parseInt(params.id);
 
   return (
     <main className="min-h-screen flex flex-col">

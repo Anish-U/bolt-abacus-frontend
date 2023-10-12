@@ -10,6 +10,9 @@ interface LoginPageProps {}
 export const metadata: Metadata = {
   title: 'BoltAbacus | Login',
   description: 'The perfect app to learn and master abacus!',
+  icons: {
+    icon: 'icon.png',
+  },
 };
 
 const LoginPage: FC<LoginPageProps> = ({}) => {

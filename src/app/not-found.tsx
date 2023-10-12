@@ -1,12 +1,6 @@
 import Button from '@/components/atoms/Button';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'BoltAbacus | Page Not Found',
-  description: 'The perfect app to learn and master abacus!',
-};
 
 const Custom404Page = () => {
   return (
