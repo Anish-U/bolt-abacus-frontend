@@ -1,80 +1,25 @@
 'use client';
 
-import { FC, ReactNode, useState } from 'react';
+import { FC, useState } from 'react';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 
 import AccordionButton from '@/components/atoms/AccordionButton';
 import Button from '@/components/atoms/Button';
 import ClassAccordionRow from '../ClassAccordionRow';
 import { Collapse } from 'react-collapse';
-import Link from 'next/link';
 import ProgressBar from '@/components/atoms/ProgressBar';
 import { TbReport } from 'react-icons/tb';
 import styles from './index.module.css';
 
-export interface ClassProgressSchema {
-  topicId: number;
-  QuizType: string;
-  isPass: boolean;
-}
-
-export interface ClassSchema {
-  classId: number;
-  topicIds: Array<number>;
-}
-
 export interface ClassAccordionProps {
   type: 'completed' | 'inprogress' | 'locked';
-  levelId: number;
-  classSchema: ClassSchema;
-  progress?: Array<ClassProgressSchema>;
+  classNumber: number;
+  progress?: number;
 }
-
-const createAccordionRows = (
-  levelId: number,
-  classSchema: ClassSchema,
-  progress: Array<ClassProgressSchema>
-) => {
-  const accordionRows: Array<ReactNode> = [];
-  for (let i = 0; i < classSchema.topicIds.length; i++) {
-    const topicId = classSchema.topicIds[i];
-
-    const classwork = progress?.find(
-      (quiz) => quiz.QuizType === 'Classwork' && quiz.topicId === topicId
-    );
-    const homework = progress?.find(
-      (quiz) => quiz.QuizType === 'HomeWork' && quiz.topicId === topicId
-    );
-
-    if (!progress) {
-      accordionRows.push(
-        <ClassAccordionRow
-          classwork={'green'}
-          homework={'green'}
-          text={`Topic ${i + 1}`}
-          link={`/student/quiz?level=${levelId}&class=${classSchema.classId}&topic=${topicId}`}
-        />
-      );
-    } else {
-      accordionRows.push(
-        <ClassAccordionRow
-          classwork={
-            classwork ? (classwork.isPass ? 'green' : 'yellow') : 'grey'
-          }
-          homework={homework ? (homework.isPass ? 'green' : 'yellow') : 'grey'}
-          text={`Topic ${i + 1}`}
-          link={`/student/quiz?level=${levelId}&class=${classSchema.classId}&topic=${topicId}`}
-        />
-      );
-    }
-  }
-  return accordionRows;
-};
 
 const ClassAccordion: FC<ClassAccordionProps> = ({
   type,
-  classSchema,
-  levelId,
+  classNumber,
   progress,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -85,17 +30,14 @@ const ClassAccordion: FC<ClassAccordionProps> = ({
     >
       <div className="flex flex-col gap-5 tablet:flex-row tablet:gap-10">
         <div className="flex flex-col flex-1 gap-5 tablet:flex-row tablet:gap-10 tablet:justify-center tablet:items-center">
-          <p className="text-lg font-medium">Class {classSchema.classId}</p>
+          <p className="text-lg font-medium">Class {classNumber}</p>
           <div className="flex items-center justify-center flex-1">
             {type === 'completed' && (
               <ProgressBar percentage={100} type={'blue'} />
             )}
-
-            {type === 'inprogress' && progress && (
+            {type === 'inprogress' && (
               <ProgressBar
-                percentage={
-                  (progress.length / (classSchema.topicIds.length * 2)) * 100
-                }
+                percentage={progress!}
                 type={'purple'}
                 isBgBlack={true}
               />
@@ -116,16 +58,12 @@ const ClassAccordion: FC<ClassAccordionProps> = ({
           </div>
           <div className="flex-1">
             {type !== 'locked' && (
-              <Link
-                href={`/student/report?level=${levelId}&class=${classSchema.classId}`}
-              >
-                <Button type={'blackWhite'} text={'Finished'}>
-                  <div className="flex items-center justify-center gap-2">
-                    <TbReport className="text-lg" />
-                    <p>Report</p>
-                  </div>
-                </Button>
-              </Link>
+              <Button type={'blackWhite'} text={'Finished'}>
+                <div className="flex items-center justify-center gap-2">
+                  <TbReport className="text-lg" />
+                  <p>Report</p>
+                </div>
+              </Button>
             )}
           </div>
         </div>
@@ -155,15 +93,31 @@ const ClassAccordion: FC<ClassAccordionProps> = ({
                   homework="grey"
                   text="Summary"
                 />
-                {createAccordionRows(levelId, classSchema, progress!)}
+                <ClassAccordionRow
+                  classwork="yellow"
+                  homework="green"
+                  text="Topic 1"
+                  link={'/'}
+                />
+                <ClassAccordionRow
+                  classwork="green"
+                  homework="yellow"
+                  link={'/'}
+                  text="Topic 2"
+                />
+                <ClassAccordionRow
+                  classwork="grey"
+                  homework="grey"
+                  link={'/'}
+                  text="Topic 3"
+                />
               </div>
               <div className="mt-4 tablet:mt-0">
-                {/* TODO: Add test button details after API changes */}
                 <AccordionButton
                   type="grey"
                   text={'Test'}
-                  link={`/student/quiz?level=${levelId}&class=${classSchema.classId}&type=test`}
-                  // disabled={true}
+                  link="/"
+                  disabled={true}
                 />
               </div>
             </div>

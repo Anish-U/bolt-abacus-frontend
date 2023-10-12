@@ -105,13 +105,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <body
         className={`${gilroy.variable} ${dmSans.variable} font-gilroy bg-black text-white text-md`}
       >
-        {domLoaded ? (
-          children
-        ) : (
-          <div className="h-screen flex justify-center items-center">
-            <LoadingSection />
-          </div>
-        )}
+        {domLoaded ? children : <LoadingSection />}
       </body>
     </html>
   );

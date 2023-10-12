@@ -16,11 +16,9 @@ export const metadata: Metadata = {
 
 const DashboardPage: FC<DashboardPageProps> = ({}) => {
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="">
       <NavBar />
-      <div className="flex-1">
-        <DashboardSection />
-      </div>
+      <DashboardSection />
       <Footer />
     </main>
   );

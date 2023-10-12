@@ -32,16 +32,8 @@ const ClassAccordionRow: FC<ClassAccordionRowProps> = ({
     <div className="flex flex-col gap-4 tablet:flex-row">
       <p className="flex-1 text-lg font-medium">{text}</p>
       <div className="flex flex-col flex-1 gap-4 tablet:flex-row desktop:gap-16">
-        <AccordionButton
-          type={classwork}
-          text={classworkText}
-          link={link && `${link}&type=classwork`}
-        />
-        <AccordionButton
-          type={homework}
-          text={homeworkText}
-          link={link && `${link}&type=homework`}
-        />
+        <AccordionButton type={classwork} text={classworkText} link={link!} />
+        <AccordionButton type={homework} text={homeworkText} link={link!} />
       </div>
     </div>
   );
