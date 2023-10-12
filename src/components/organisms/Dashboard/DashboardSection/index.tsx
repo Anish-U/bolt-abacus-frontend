@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 'use client';
 
 import { FC, useEffect, useState } from 'react';

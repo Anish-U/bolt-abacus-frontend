@@ -18,6 +18,7 @@ const LevelSection: FC<LevelSectionProps> = ({ level }) => {
         // TODO: Add Server call
         setLoading(false);
       } catch (err) {
+        // eslint-disable-next-line no-console
         console.log(err);
       }
     };
@@ -30,6 +31,7 @@ const LevelSection: FC<LevelSectionProps> = ({ level }) => {
         <LoadingSection />
       ) : (
         <div className="flex flex-col gap-4 p-6 justify-evenly tablet:justify-between tablet:items-center tablet:p-10 tablet:gap-8 desktop:p-20">
+          {level}
           <ClassAccordion type="completed" classNumber={1} />
           <ClassAccordion type="inprogress" classNumber={2} progress={51} />
           <ClassAccordion type="locked" classNumber={3} />

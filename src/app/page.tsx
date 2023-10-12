@@ -14,9 +14,6 @@ interface HomePageProps {}
 export const metadata: Metadata = {
   title: 'BoltAbacus',
   description: 'The perfect app to learn and master abacus!',
-  icons: {
-    icon: 'icon.png',
-  },
 };
 
 const HomePage: FC<HomePageProps> = ({}) => {
