@@ -3,6 +3,7 @@
 import { FC, useEffect, useState } from 'react';
 
 import ClassAccordion from '@/components/molecules/ClassAccordion';
+import IsAuthStudent from '@/hoc/withStudentAuth';
 import LoadingSection from '../../LoadingSection';
 
 export interface LevelSectionProps {
@@ -41,4 +42,4 @@ const LevelSection: FC<LevelSectionProps> = ({ level }) => {
   );
 };
 
-export default LevelSection;
+export default IsAuthStudent(LevelSection);

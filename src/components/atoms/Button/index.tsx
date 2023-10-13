@@ -16,7 +16,12 @@ export interface ButtonProps {
   children?: ReactNode;
 }
 
-const Button: FC<ButtonProps> = ({ type, text, isLoading, children }) => {
+const Button: FC<ButtonProps> = ({
+  type,
+  text,
+  isLoading = false,
+  children,
+}) => {
   return (
     <button
       className={`w-full px-3 py-2 font-semibold text-center rounded-lg text-md
@@ -36,10 +41,6 @@ const Button: FC<ButtonProps> = ({ type, text, isLoading, children }) => {
       {!isLoading && children && <span className="">{children}</span>}
     </button>
   );
-};
-
-Button.defaultProps = {
-  isLoading: false,
 };
 
 export default Button;

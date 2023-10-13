@@ -16,7 +16,7 @@ export async function POST(req: Request) {
 
     if (res.status === 200) {
       return NextResponse.json({ user: data });
-    } else if (res.status === 401) {
+    } else if (res.status === 401 || res.status === 403) {
       return NextResponse.json({ error: data }, { status: res.status });
     } else {
       return NextResponse.json(
@@ -25,6 +25,8 @@ export async function POST(req: Request) {
       );
     }
   } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log('error:', error);
     return NextResponse.json(
       {
         error: { message: 'Something went wrong. Please try again' },

@@ -24,6 +24,8 @@ export function generateMetadata({ params }: LevelPageProps): Metadata {
 
 const LevelPage: FC<LevelPageProps> = ({ params }) => {
   const level = parseInt(params.id);
+  // eslint-disable-next-line no-console
+  console.log('Level Page Hit:', params.id);
 
   if (isNaN(level) || level > 10 || level < 0) {
     redirect('/student/dashboard');

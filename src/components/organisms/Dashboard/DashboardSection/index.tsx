@@ -1,9 +1,10 @@
-/* eslint-disable no-console */
 'use client';
 
 import { FC, useEffect, useState } from 'react';
 
+import ErrorBox from '@/components/molecules/ErrorBox';
 import InfoSection from '../InfoSection';
+import IsAuthStudent from '@/hoc/withStudentAuth';
 import LoadingSection from '../../LoadingSection';
 import RoadmapSection from '../RoadmapSection';
 import WelcomeSection from '../WelcomeSection';
@@ -13,9 +14,11 @@ export interface DashboardSectionProps {}
 
 const DashboardSection: FC<DashboardSectionProps> = ({}) => {
   const [loading, setLoading] = useState(true);
-  const [currentLevel, setCurrentLevel] = useState(0);
-  const [currentClass, setCurrentClass] = useState(0);
-  const [classLink, setClassLink] = useState('www.zoom.com');
+  const [fallBackLink, setFallBackLink] = useState<string>('/');
+  const [error, setError] = useState<string | null>(null);
+  const [currentLevel, setCurrentLevel] = useState<number>(0);
+  const [currentClass, setCurrentClass] = useState<number>(0);
+  const [classLink, setClassLink] = useState<string>('https://zoom.com');
 
   useEffect(() => {
     const getDashboardData = async () => {
@@ -30,19 +33,22 @@ const DashboardSection: FC<DashboardSectionProps> = ({}) => {
           },
         });
 
-        const { level, error } = await res.json();
+        const { level, error: err } = await res.json();
 
         if (res.status === 200) {
           setCurrentLevel(level.levelId);
           setCurrentClass(level.latestClass);
           setClassLink(level.latestLink);
-          setLoading(false);
-          return { level };
+        } else if (res.status === 401 || res.status === 403) {
+          setError(err?.error);
+          setFallBackLink('/login');
         } else {
-          console.log(error);
+          setError(err?.error);
         }
       } catch (err) {
-        console.log(err);
+        setError('Something went wrong. Please try again');
+      } finally {
+        setLoading(false);
       }
     };
     getDashboardData();
@@ -54,21 +60,31 @@ const DashboardSection: FC<DashboardSectionProps> = ({}) => {
         <LoadingSection />
       ) : (
         <>
-          <WelcomeSection classLink={classLink} />
-          <InfoSection
-            currentLevel={currentLevel}
-            description={`Class ${currentClass}`}
-            progress={50}
-          />
-          <RoadmapSection
-            currentLevel={currentLevel}
-            currentClass={currentClass}
-            progress={10}
-          />
+          {error ? (
+            <ErrorBox
+              errorMessage={error}
+              link={fallBackLink!}
+              buttonText={fallBackLink === '/login' ? 'Login Now' : 'Try Again'}
+            />
+          ) : (
+            <>
+              <WelcomeSection classLink={classLink!} />
+              <InfoSection
+                currentLevel={currentLevel!}
+                description={`Class ${currentClass!}`}
+                progress={50}
+              />
+              <RoadmapSection
+                currentLevel={currentLevel!}
+                currentClass={currentClass!}
+                progress={10}
+              />
+            </>
+          )}
         </>
       )}
     </>
   );
 };
 
-export default DashboardSection;
+export default IsAuthStudent(DashboardSection);

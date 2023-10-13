@@ -77,8 +77,13 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 
   useEffect(() => {
     if (token && user) {
-      setUser(JSON.parse(user));
-      setAuthentication(true);
+      try {
+        setUser(JSON.parse(user));
+        setAuthentication(true);
+      } catch (error) {
+        setUser(null);
+        setAuthentication(false);
+      }
     } else {
       setUser(null);
       setAuthentication(false);
